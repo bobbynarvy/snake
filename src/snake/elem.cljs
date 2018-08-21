@@ -11,7 +11,7 @@
   the following properties:
   :direction - a vector that describes the vertical and horizontal
   direction of the head in 2D
-  :coords - a vector containing vectors of x-y coordinates,
+  :coords - a vector containing vectors of x-y coordinate pairs,
   the first being the head and the rest being the tail"
   (atom {}))
 
@@ -19,7 +19,7 @@
 
 (def candy
   "A candy is a simple vector containing the x-y
-  coordinate of the candy"
+  coordinate pair of the candy"
   (atom []))
 
 ;; =============
@@ -41,7 +41,7 @@
        direction))
 
 (defn continue-point
-  "Resets the coordinate of a snake from the end to the
+  "Resets the coordinates of a snake from the end to the
   beginning of the height/width or vice versa once the
   min/max value of height/width is touched"
   [point limit]
@@ -50,7 +50,7 @@
         :else point))
 
 (defn next-head-coords
-  "Gets the next x-y coordinates for the head of the snake"
+  "Gets the next x-y coordinate pair for the head of the snake"
   [[x y] direction]
   (let [[c-x c-y] (orient direction)]
     (if (zero? c-x)
@@ -84,10 +84,10 @@
     snake))
 
 (defn grow
-  "Adds one x-y coordinate to the end of the snake
+  "Adds one x-y coordinate pair to the end of the snake
   by getting the next position of the snake and setting
-  the previously last coordinate of the tail as the new
-  last coordinate of the tail"
+  the previously last coordinate pair of the tail as the new
+  last coordinate pair of the tail"
   [{[head & tail] :coords :as snake}]
   (-> (set-snake-next-position snake)
       (get :coords)
@@ -119,7 +119,7 @@
 ;; -----------
 
 (defn create-random-candy
-  "return a random coordinate in the canvas
+  "Returns a random coordinate pair in the canvas
   to draw a candy on; make sure that it doesn't
   fall within the coordinates of the snake"
   [except]
