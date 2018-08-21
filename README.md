@@ -2,6 +2,8 @@
 
 Snake game in Clojurescript
 
+Play the game: [https://bobbynarvy.github.io/snake/](https://bobbynarvy.github.io/snake/)
+
 ## Overview
 
 This is a fun little personal project written with the following learning objectives:
